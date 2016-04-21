@@ -1,3 +1,24 @@
 <!DOCTYPE html>
 <title>Mountain</title>
-<h1>Mountain</h1>
+<h1><a href="{% url 'home' %}">Mountain</a></h1>
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}">{{ user.get_full_name }}</a></p>
+{% else %}
+<p><a href="{% url 'login' %}">Login</a></p>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+<hr>
+<ul>
+  <li><a href="{% url 'login' %}">login</a></li>
+  <li><a href="{% url 'logout' %}">logout</a></li>
+  <li><a href="{% url 'password_change' %}">password_change</a></li>
+  <li><a href="{% url 'password_change_done' %}">password_change_done</a></li>
+  <li><a href="{% url 'password_reset' %}">password_reset</a></li>
+  <li><a href="{% url 'password_reset_done' %}">password_reset_done</a></li>
+  <li><a href="{% url 'password_reset_confirm' uidb64='1234' token='5-6' %}">password_reset_confirm</a></li>
+  <li><a href="{% url 'password_reset_complete' %}">password_reset_complete</a></li>
+</ul>

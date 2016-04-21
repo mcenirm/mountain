@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'oauth2_provider',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -124,3 +126,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    )
+}
